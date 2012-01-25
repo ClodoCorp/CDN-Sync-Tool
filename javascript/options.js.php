@@ -37,6 +37,11 @@ jQuery(document).ready( function(){
 			var apiKey = $('input[name="cf_apikey"]').val();
 			var container = $('input[name="cf_container"]').val();
 			ajaxUrl += '&username='+username+'&apikey='+apiKey+'&container='+container;
+		} else if ( typeData == "clodo" ){			
+			var username = $('input[name="clodo_username"]').val(); 
+			var apiKey = $('input[name="clodo_apikey"]').val();
+			var container = $('input[name="clodo_container"]').val();
+			ajaxUrl += '&username='+username+'&apikey='+apiKey+'&container='+container;
 		}
 		
 		$.get(ajaxUrl, function(data) {
@@ -51,7 +56,7 @@ jQuery(document).ready( function(){
 	
 	});
 	var cdnSelected = $('#cdn option:selected').val();
-	 $.each(["aws","cf","ftp"],function(index, value){
+	$.each(["aws","cf","clodo","ftp"],function(index, value){
 	 	if ( cdnSelected != value) {
         	$('.'+value+'_details').hide();
         }

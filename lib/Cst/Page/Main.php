@@ -87,6 +87,22 @@ class Cst_Page_Main extends Cst_Page {
 				if ( !isset($_POST["cf_container"]) || empty($_POST["cf_container"]) ){
 					$errorArray[] = "CloudFiles Container is required";
 				}
+			} elseif ( $_POST['cdn_provider'] == "clodo" ){
+				//***********************************
+				// Clodo Cloud Storage Data
+				//***********************************
+				
+				if ( !isset($_POST["clodo_username"]) || empty($_POST["clodo_username"]) ){
+					$errorArray[] = "Cloud Storage Username is required";
+				}
+				
+				if ( !isset($_POST["clodo_apikey"]) || empty($_POST["clodo_apikey"]) ){
+					$errorArray[] = "Cloud Storage API key is required";
+				}
+				
+				if ( !isset($_POST["clodo_container"]) || empty($_POST["clodo_container"]) ){
+					$errorArray[] = "Cloud Storage Container is required";
+				}
 				
 			} elseif ( $_POST['cdn_provider'] == "ftp" ){
 				//************************************
@@ -155,6 +171,11 @@ class Cst_Page_Main extends Cst_Page {
 					$cdn["apikey"]    = $_POST["cf_apikey"];
 					$cdn["container"] = $_POST["cf_container"];	
 					$cdn["authurl"] = $_POST["cf_authurl"];	
+				} elseif ( $cdn["provider"] == "clodo" ){
+					$cdn["username"]  = $_POST["clodo_username"];
+					$cdn["apikey"]    = $_POST["clodo_apikey"];
+					$cdn["container"] = $_POST["clodo_container"];	
+					$cdn["authurl"] = $_POST["clodo_authurl"];	
 				} elseif ( $cdn["provider"] == "ftp" ){
 					$cdn["username"]  = $_POST["ftp_username"];
 					$cdn["password"]  = $_POST["ftp_password"];
